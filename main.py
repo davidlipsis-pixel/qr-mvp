@@ -1,4 +1,5 @@
 import sqlite3
+import os
 from datetime import datetime
 
 from fastapi import FastAPI, Request, Form
@@ -8,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
-DB = "db.sqlite"
+DB = os.environ.get("DB_PATH", "db.sqlite")
 
 
 def init_db() -> None:
